@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SwayamMail — The Future of Email Marketing in India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --white: #ffffff;
+  --off: #fafafa;
+  --bg: #f5f5f3;
+  --border: #e4e4e0;
+  --border2: #d0d0ca;
+  --text: #111110;
+  --text2: #4a4a45;
+  --text3: #9b9b94;
+  --accent: #1a1a18;
+  --green: #059669;
+  --blue: #2563eb;
+  --radius: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Geist', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-mark {
+  width: 24px; height: 24px;
+  background: var(--text);
+  border-radius: 6px;
+  display: grid; place-items: center;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 160px 32px 100px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--green);
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 8vw, 4.8rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin-bottom: 28px;
+}
+.hero h1 em { font-style: italic; color: var(--text3); }
+.hero-sub {
+  font-size: 1.25rem;
+  color: var(--text2);
+  max-width: 650px;
+  margin: 0 auto 48px;
+}
+
+/* ── VIEW SWITCHER ── */
+.view-switcher {
+  background: var(--bg);
+  padding: 5px;
+  border-radius: 100px;
+  display: inline-flex;
+  margin-bottom: 40px;
+  border: 1px solid var(--border);
+}
+.view-btn {
+  padding: 10px 24px;
+  border: none;
+  background: transparent;
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: all 0.3s;
+  color: var(--text3);
+}
+.view-btn.active {
+  background: var(--white);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.preview-container {
+  max-width: 800px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+.panel { display: none; animation: slideUp 0.5s ease-out; }
+.panel.active { display: block; }
+
+/* ── THE PROBLEM SECTION ── */
+.problem-section {
+  padding: 100px 32px;
+  background: var(--off);
+  border-top: 1px solid var(--border);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+.card-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
+.card h3 { font-family: 'Fraunces', serif; margin-bottom: 12px; font-size: 1.4rem; }
+
+/* ── ROADMAP ── */
+.roadmap { padding: 100px 32px; text-align: center; }
+.roadmap-container {
+  max-width: 800px;
+  margin: 60px auto 0;
+  text-align: left;
+}
+.roadmap-item {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 40px;
+  position: relative;
+}
+.roadmap-item::before {
+  content: '';
+  position: absolute;
+  left: 11px; top: 24px; bottom: 0;
+  width: 1px; background: var(--border);
+}
+.roadmap-item:last-child::before { display: none; }
+.dot {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  z-index: 2;
+}
+.dot.done { border-color: var(--green); background: var(--green); }
+.roadmap-content h4 { font-size: 1rem; margin-bottom: 4px; }
+.roadmap-content p { font-size: 0.9rem; color: var(--text2); }
+
+/* ── FORMS & BUTTONS ── */
+.btn-primary {
+  background: var(--text);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s;
+}
+.btn-primary:hover { transform: scale(1.02); }
+
+.waitlist-card {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 60px 40px;
+  background: var(--text);
+  color: var(--white);
+  border-radius: 24px;
+  text-align: center;
+}
+.waitlist-card input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .hero { padding-top: 120px; }
+  .hero h1 { font-size: 2.8rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="logo-mark">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 4.5L6 7.5L11 4.5" stroke="white" stroke-width="1.2"/><rect x="1" y="3" width="10" height="7" rx="1.5" stroke="white" stroke-width="1.2"/></svg>
+    </span>
+    SwayamMail
+  </a>
+  <div style="font-family:'Geist Mono'; font-size: 0.7rem; color: var(--text3);">v0.1 BETA</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🇮🇳 Built for the Next Billion Indian Businesses</div>
+  <h1>Finally, an email platform<br/>that speaks <em>your language.</em></h1>
+  <p class="hero-sub">High-speed transactional alerts for developers. AI-driven marketing for business owners. Local pricing for everyone.</p>
+  
+  <div class="view-switcher">
+    <button class="view-btn active" onclick="toggleView('biz')">Business Owner</button>
+    <button class="view-btn" onclick="toggleView('dev')">Developer</button>
+  </div>
+
+  <div class="preview-container">
+    <div id="biz-preview" class="panel active">
+        <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:32px; text-align:left; box-shadow: 0 20px 50px rgba(0,0,0,0.05);">
+            <div style="margin-bottom:24px;">
+                <h3 style="font-family:'Fraunces'; font-size:1.2rem;">Abandoned Cart Recovery</h3>
+                <p style="font-size:0.85rem; color:var(--text2);">AI generated this email based on your shop's style.</p>
+            </div>
+            <div style="background:var(--off); height:150px; border-radius:8px; display:grid; place-items:center; border:1px dashed var(--border2); color:var(--text3); font-size:0.8rem;">
+                [ Visual Email Template Preview ]
+            </div>
+            <div style="margin-top:20px; display:flex; gap:10px;">
+                <div style="flex:1; background:var(--green); height:4px; border-radius:4px;"></div>
+                <div style="flex:1; background:var(--green); height:4px; border-radius:4px;"></div>
+                <div style="flex:1; background:var(--bg); height:4px; border-radius:4px;"></div>
+            </div>
+            <p style="font-size:0.75rem; margin-top:10px; color:var(--green);">✔ AI Content Optimized for 8:00 AM IST Delivery</p>
+        </div>
+    </div>
+
+    <div id="dev-preview" class="panel">
+        <div style="background:#111; border-radius:16px; padding:32px; text-align:left; font-family:'Geist Mono'; font-size:0.9rem; line-height:1.7;">
+            <span style="color:#888;">// Initialize with one line</span><br/>
+            <span style="color:#c4b5fd;">const</span> mail = <span style="color:#c4b5fd;">new</span> <span style="color:#93c5fd;">SwayamMail</span>(<span style="color:#4ade80;">'sm_live_9921'</span>);<br/><br/>
+            <span style="color:#888;">// Send to 1 or 100,000 users</span><br/>
+            <span style="color:#c4b5fd;">await</span> mail.<span style="color:#93c5fd;">send</span>({<br/>
+            &nbsp;&nbsp;to: <span style="color:#4ade80;">['user@domain.in']</span>,<br/>
+            &nbsp;&nbsp;subject: <span style="color:#4ade80;">'Your OTP is 1234'</span><br/>
+            });
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem-section">
+  <div class="section-header" style="text-align:center; margin-bottom:60px;">
+    <h2 style="font-family:'Fraunces'; font-size:2.5rem;">Why SwayamMail?</h2>
+    <p style="color:var(--text2);">We solve the three biggest pains in Indian email marketing.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <span class="card-icon">💸</span>
+      <h3>No More $ Pressure</h3>
+      <p>International tools charge in Dollars. When the Rupee falls, your bill rises. We offer flat INR pricing with Razorpay & UPI support.</p>
+    </div>
+    <div class="card">
+      <h3>Primary Inbox Only</h3>
+      <p>Our infrastructure is optimized for Indian networks. We ensure your OTPs and newsletters don't rot in the 'Promotions' or 'Spam' tab.</p>
+      <span class="card-icon" style="margin-top:20px;">🚀</span>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤖</span>
+      <h3>AI for Local Brands</h3>
+      <p>SwayamMail's AI understands local context. Generate email copy that resonates with the Indian audience in seconds.</p>
+    </div>
+  </div>
+</section>
+
+<section class="roadmap">
+  <h2 style="font-family:'Fraunces'; font-size:2.5rem;">The Roadmap to Launch</h2>
+  <div class="roadmap-container">
+    <div class="roadmap-item">
+      <div class="dot done"></div>
+      <div class="roadmap-content">
+        <h4>Core Engine Completed</h4>
+        <p>Built on AWS SES & Go for high-speed throughput (10k emails/min).</p>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="dot done"></div>
+      <div class="roadmap-content">
+        <h4>Developer SDK (Beta)</h4>
+        <p>Node.js and Python SDKs ready for early testing.</p>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="dot"></div>
+      <div class="roadmap-content">
+        <h4>AI Template Engine (In Progress)</h4>
+        <p>Building the "Prompt-to-Email" visual editor for non-tech users.</p>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="dot"></div>
+      <div class="roadmap-content">
+        <h4>Public Launch (Q3 2026)</h4>
+        <p>Opening the doors for all Indian startups and businesses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="waitlist">
+  <div class="waitlist-card">
+    <h2 style="font-family:'Fraunces'; font-size:2.5rem; margin-bottom:16px;">Be the first to ship.</h2>
+    <p style="color:rgba(255,255,255,0.7); margin-bottom:32px;">Join 200+ founders and developers on the early access waitlist.</p>
+    <form style="max-width:400px; margin:0 auto;">
+      <input type="email" placeholder="your@email.com" required>
+      <button type="submit" class="btn-primary" style="background:var(--white); color:var(--text); width:100%; justify-content:center;">
+        Get Early Access →
+      </button>
+    </form>
+  </div>
+</section>
+
+<footer style="padding: 60px 32px; text-align: center; border-top: 1px solid var(--border); background: var(--off);">
+  <div style="font-family:'Fraunces'; font-size:1.2rem; margin-bottom:10px;">SwayamMail</div>
+  <p style="font-size:0.8rem; color:var(--text3); margin-bottom:24px;">Solving Email for the Indian Ecosystem.</p>
+  <div style="display:flex; gap:20px; justify-content:center; font-size:0.8rem;">
+    <a href="#" style="color:var(--text2); text-decoration:none;">Twitter</a>
+    <a href="#" style="color:var(--text2); text-decoration:none;">LinkedIn</a>
+    <a href="#" style="color:var(--text2); text-decoration:none;">Documentation</a>
+  </div>
+</footer>
+
+<script>
+function toggleView(view) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+    
+    if(view === 'biz') {
+        document.getElementById('biz-preview').classList.add('active');
+        event.target.classList.add('active');
+    } else {
+        document.getElementById('dev-preview').classList.add('active');
+        event.target.classList.add('active');
+    }
+}
+</script>
+
+</body>
+</html>

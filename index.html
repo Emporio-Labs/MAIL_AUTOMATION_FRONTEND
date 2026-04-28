@@ -1,0 +1,841 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SwayamMail — Growth & Email Marketing for India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --white: #ffffff;
+  --off: #fafafa;
+  --bg: #f5f5f3;
+  --border: #e4e4e0;
+  --border2: #d0d0ca;
+  --text: #111110;
+  --text2: #6b6b66;
+  --text3: #9b9b94;
+  --accent: #1a1a18;
+  --green: #059669;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --blue: #2563eb;
+  --radius: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Geist', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-mark {
+  width: 24px; height: 24px;
+  background: var(--text);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+}
+.btn-launch {
+  font-size: 0.75rem;
+  background: var(--off);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: var(--text2);
+  font-weight: 500;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 140px 32px 80px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--blue);
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+}
+.hero h1 em { font-style: italic; color: var(--text2); }
+.hero-sub {
+  font-size: 1.125rem;
+  color: var(--text2);
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+/* ── SWITCHER ── */
+.view-switcher {
+  background: var(--off);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 100px;
+  margin-bottom: 40px;
+}
+.view-btn {
+  padding: 8px 20px;
+  border: none;
+  background: transparent;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text3);
+  cursor: pointer;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+.view-btn.active {
+  background: var(--white);
+  color: var(--text);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.display-area {
+  margin-top: 20px;
+  min-height: 300px;
+}
+.panel { display: none; }
+.panel.active { display: block; animation: fadeUp 0.4s ease; }
+
+/* ── DASHBOARD PREVIEW ── */
+.dashboard-mock {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+.mock-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  border: 1px solid var(--border);
+  padding: 16px;
+  border-radius: 8px;
+}
+.stat-label { font-size: 0.7rem; color: var(--text3); text-transform: uppercase; }
+.stat-val { font-size: 1.25rem; font-weight: 600; color: var(--green); }
+
+/* ── CODE MOCK (REUSED) ── */
+.code-mock {
+  background: #111;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: left;
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* ── SECTIONS ── */
+section { padding: 100px 32px; border-top: 1px solid var(--border); }
+.section-header { max-width: 1100px; margin: 0 auto 60px; text-align: center; }
+.section-header h2 { font-family: 'Fraunces', serif; font-size: 2.5rem; letter-spacing: -0.02em; }
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.benefit-card {
+  padding: 40px;
+  background: var(--off);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+.benefit-card h3 { margin-bottom: 12px; font-size: 1.2rem; }
+.benefit-card p { color: var(--text2); font-size: 0.95rem; }
+
+/* ── PRICING ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.price-card { background: var(--white); padding: 40px 32px; }
+.price-card.featured { background: var(--text); color: var(--white); }
+.price-card h4 { font-family: 'Geist Mono', monospace; font-size: 0.75rem; color: var(--text3); margin-bottom: 16px; }
+.price-card .amt { font-family: 'Fraunces', serif; font-size: 2.5rem; margin-bottom: 8px; }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  background: var(--text);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+}
+.btn-primary:hover { opacity: 0.9; }
+
+/* ── WAITLIST FORM ── */
+.waitlist-box {
+  background: var(--off);
+  padding: 60px 32px;
+  border-radius: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+}
+.waitlist-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+.waitlist-form input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .mock-stat-grid { grid-template-columns: 1fr; }
+  .waitlist-form { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="logo-mark">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 4.5L6 7.5L11 4.5" stroke="white" stroke-width="1.2"/><rect x="1" y="3" width="10" height="7" rx="1.5" stroke="white" stroke-width="1.2"/></svg>
+    </span>
+    SwayamMail
+  </a>
+  <div class="btn-launch">Launching Q3 2026</div>
+  <a href="#waitlist" class="btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Join Waitlist</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Coming Soon: India's Smartest Email Platform</div>
+  <h1>Send emails that<br/><em>actually get opened.</em></h1>
+  <p class="hero-sub">From automated receipts to viral newsletters. SwayamMail combines world-class delivery with an AI-powered editor anyone can use.</p>
+  
+  <div class="view-switcher">
+    <button class="view-btn active" onclick="switchView('biz')">For Business</button>
+    <button class="view-btn" onclick="switchView('dev')">For Developers</button>
+  </div>
+
+  <div class="display-area">
+    <div id="biz-panel" class="panel active">
+      <div class="dashboard-mock">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <span style="font-weight:600; font-size:0.9rem;">Campaign Performance</span>
+          <span style="font-size:0.75rem; color:var(--text3)">Last 30 Days</span>
+        </div>
+        <div class="mock-stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Emails Delivered</div>
+            <div class="stat-val" style="color:var(--text)">42,801</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Open Rate</div>
+            <div class="stat-val">38.4%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Revenue Generated</div>
+            <div class="stat-val" style="color:var(--blue)">₹1,24,000</div>
+          </div>
+        </div>
+        <div style="height:8px; width:100%; background:var(--bg); border-radius:10px; overflow:hidden;">
+          <div style="height:100%; width:85%; background:var(--green);"></div>
+        </div>
+        <p style="font-size:0.75rem; color:var(--text2); margin-top:12px;">✨ AI Tip: Your "Weekend Sale" email is performing 12% better than average.</p>
+      </div>
+    </div>
+
+    <div id="dev-panel" class="panel">
+      <div class="code-mock">
+        <span style="color: #c4b5fd;">import</span> SwayamMail <span style="color: #c4b5fd;">from</span> <span style="color: #4ade80;">'@swayammail/sdk'</span>;<br/><br/>
+        <span style="color: #c4b5fd;">await</span> mail.<span style="color: #93c5fd;">send</span>({<br/>
+        &nbsp;&nbsp;to: <span style="color: #4ade80;">'customer@gmail.com'</span>,<br/>
+        &nbsp;&nbsp;template: <span style="color: #4ade80;">'order-confirmed'</span>,<br/>
+        &nbsp;&nbsp;data: { orderId: <span style="color: #fcd34d;">'#8821'</span> }<br/>
+        });
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="benefits">
+  <div class="section-header">
+    <h2>Growth tools for every <em>ambition.</em></h2>
+  </div>
+  <div class="benefit-grid">
+    <div class="benefit-card">
+      <h3>AI-Powered Writing</h3>
+      <p>Stuck on what to say? Tell our AI your goal, and it will write, design, and personalize the perfect email for your brand in seconds.</p>
+    </div>
+    <div class="benefit-card">
+      <h3>India-First Delivery</h3>
+      <p>We optimize our servers specifically for Indian ISPs (Gmail, Outlook, Rediff) to ensure your messages land in the primary inbox, not spam.</p>
+    </div>
+    <div class="benefit-card">
+      <h3>Visual Automations</h3>
+      <p>Build "Customer Journeys" visually. Send a welcome gift when they sign up, or a reminder if they leave items in their cart.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-header">
+    <h2>Local prices. <em>Global power.</em></h2>
+    <p style="margin-top:10px; color:var(--text3)">Stop paying for email in Dollars. Pay in Rupees via UPI or Razorpay.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h4>STARTER</h4>
+      <div class="amt">₹999</div>
+      <p style="color:var(--text3); font-size:0.8rem; margin-bottom:20px;">/month</p>
+      <ul style="list-style:none; font-size:0.85rem; color:var(--text2);">
+        <li style="margin-bottom:8px;">✓ 50,000 Emails</li>
+        <li style="margin-bottom:8px;">✓ 100 AI Generations</li>
+        <li>✓ Full Analytics</li>
+      </ul>
+    </div>
+    <div class="price-card featured">
+      <h4>PRO</h4>
+      <div class="amt">₹3,999</div>
+      <p style="color:rgba(255,255,255,0.4); font-size:0.8rem; margin-bottom:20px;">/month</p>
+      <ul style="list-style:none; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+        <li style="margin-bottom:8px;">✓ 300,000 Emails</li>
+        <li style="margin-bottom:8px;">✓ Unlimited AI</li>
+        <li>✓ Priority Delivery</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="waitlist" style="text-align:center;">
+  <div class="waitlist-box">
+    <h2 style="font-family: 'Fraunces', serif;">Get early access.</h2>
+    <p style="color:var(--text2); margin-top:10px;">We are currently in private beta. Join the waitlist to be among the first to send smarter emails when we launch.</p>
+    <form class="waitlist-form">
+      <input type="email" placeholder="Enter your work email" required>
+      <button type="submit" class="btn-primary">Reserve my spot →</button>
+    </form>
+    <p style="font-size:0.7rem; color:var(--text3); margin-top:20px;">Made with ❤️ in India for the world.</p>
+  </div>
+</section>
+
+<footer style="padding: 40px; text-align: center; color: var(--text3); font-size: 0.8rem; border-top: 1px solid var(--border);">
+  © 2026 SwayamMail. All rights reserved. Launching soon.
+</footer>
+
+<script>
+function switchView(type) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+  
+  if(type === 'biz') {
+    document.getElementById('biz-panel').classList.add('active');
+    event.target.classList.add('active');
+  } else {
+    document.getElementById('dev-panel').classList.add('active');
+    event.target.classList.add('active');
+  }
+}
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SwayamMail — The Future of Email Marketing in India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --white: #ffffff;
+  --off: #fafafa;
+  --bg: #f5f5f3;
+  --border: #e4e4e0;
+  --border2: #d0d0ca;
+  --text: #111110;
+  --text2: #4a4a45;
+  --text3: #9b9b94;
+  --accent: #1a1a18;
+  --green: #059669;
+  --blue: #2563eb;
+  --radius: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Geist', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-mark {
+  width: 24px; height: 24px;
+  background: var(--text);
+  border-radius: 6px;
+  display: grid; place-items: center;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 160px 32px 100px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--green);
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 8vw, 4.8rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin-bottom: 28px;
+}
+.hero h1 em { font-style: italic; color: var(--text3); }
+.hero-sub {
+  font-size: 1.25rem;
+  color: var(--text2);
+  max-width: 650px;
+  margin: 0 auto 48px;
+}
+
+/* ── VIEW SWITCHER ── */
+.view-switcher {
+  background: var(--bg);
+  padding: 5px;
+  border-radius: 100px;
+  display: inline-flex;
+  margin-bottom: 40px;
+  border: 1px solid var(--border);
+}
+.view-btn {
+  padding: 10px 24px;
+  border: none;
+  background: transparent;
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: all 0.3s;
+  color: var(--text3);
+}
+.view-btn.active {
+  background: var(--white);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.preview-container {
+  max-width: 800px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+.panel { display: none; animation: slideUp 0.5s ease-out; }
+.panel.active { display: block; }
+
+.dashboard-mock {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+.mock-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  border: 1px solid var(--border);
+  padding: 16px;
+  border-radius: 8px;
+}
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--text3);
+  text-transform: uppercase;
+}
+.stat-val {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--green);
+}
+
+/* ── THE PROBLEM SECTION ── */
+.problem-section {
+  padding: 100px 32px;
+  background: var(--off);
+  border-top: 1px solid var(--border);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+.card-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
+.card h3 { font-family: 'Fraunces', serif; margin-bottom: 12px; font-size: 1.4rem; }
+
+/* ── ROADMAP ── */
+.roadmap { padding: 100px 32px; text-align: center; }
+.roadmap-container {
+  max-width: 800px;
+  margin: 60px auto 0;
+  text-align: left;
+}
+.roadmap-item {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 40px;
+  position: relative;
+}
+.roadmap-item::before {
+  content: '';
+  position: absolute;
+  left: 11px; top: 24px; bottom: 0;
+  width: 1px; background: var(--border);
+}
+.roadmap-item:last-child::before { display: none; }
+.dot {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  z-index: 2;
+}
+.dot.done { border-color: var(--green); background: var(--green); }
+.roadmap-content h4 { font-size: 1rem; margin-bottom: 4px; }
+.roadmap-content p { font-size: 0.9rem; color: var(--text2); }
+
+/* ── FORMS & BUTTONS ── */
+.btn-primary {
+  background: var(--text);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s;
+}
+.btn-primary:hover { transform: scale(1.02); }
+
+.waitlist-card {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 60px 40px;
+  background: var(--text);
+  color: var(--white);
+  border-radius: 24px;
+  text-align: center;
+}
+.waitlist-card input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .hero { padding-top: 120px; }
+  .hero h1 { font-size: 2.8rem; }
+  .mock-stat-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="logo-mark">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 4.5L6 7.5L11 4.5" stroke="white" stroke-width="1.2"/><rect x="1" y="3" width="10" height="7" rx="1.5" stroke="white" stroke-width="1.2"/></svg>
+    </span>
+    SwayamMail
+  </a>
+  <div style="font-family:'Geist Mono'; font-size: 0.7rem; color: var(--text3);">v0.1 BETA</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🇮🇳 Built for the Next Billion Indian Businesses</div>
+  <h1>Finally, an email platform<br/>that speaks <em>your language.</em></h1>
+  <p class="hero-sub">High-speed transactional alerts for developers. AI-driven marketing for business owners. Local pricing for everyone.</p>
+  
+  <div class="view-switcher">
+    <button class="view-btn active" onclick="toggleView('biz', this)">Business Owner</button>
+    <button class="view-btn" onclick="toggleView('dev', this)">Developer</button>
+  </div>
+
+  <div class="preview-container">
+    <div id="biz-preview" class="panel active">
+      <div class="dashboard-mock">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <span style="font-weight:600; font-size:0.9rem;">Campaign Performance</span>
+          <span style="font-size:0.75rem; color:var(--text3)">Last 30 Days</span>
+        </div>
+        <div class="mock-stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Emails Delivered</div>
+            <div class="stat-val" style="color:var(--text)">42,801</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Open Rate</div>
+            <div class="stat-val">38.4%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Revenue Generated</div>
+            <div class="stat-val" style="color:var(--blue)">₹1,24,000</div>
+          </div>
+        </div>
+        <div style="height:8px; width:100%; background:var(--bg); border-radius:10px; overflow:hidden;">
+          <div style="height:100%; width:85%; background:var(--green);"></div>
+        </div>
+        <p style="font-size:0.75rem; color:var(--text2); margin-top:12px;">✨ AI Tip: Your "Weekend Sale" email is performing 12% better than average.</p>
+      </div>
+    </div>
+
+    <div id="dev-preview" class="panel">
+        <div style="background:#111; border-radius:16px; padding:32px; text-align:left; font-family:'Geist Mono'; font-size:0.9rem; line-height:1.7; color:#9ca3af;">
+            <span style="color:#888;">// Initialize with one line</span><br/>
+            <span style="color:#c4b5fd;">const</span> mail = <span style="color:#c4b5fd;">new</span> <span style="color:#93c5fd;">SwayamMail</span>(<span style="color:#4ade80;">'sm_live_9921'</span>);<br/><br/>
+            <span style="color:#888;">// Send to 1 or 100,000 users</span><br/>
+            <span style="color:#c4b5fd;">await</span> mail.<span style="color:#93c5fd;">send</span>({<br/>
+            &nbsp;&nbsp;to: <span style="color:#4ade80;">['user@domain.in']</span>,<br/>
+            &nbsp;&nbsp;subject: <span style="color:#4ade80;">'Your OTP is 1234'</span><br/>
+            });
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem-section">
+  <div class="section-header" style="text-align:center; margin-bottom:60px;">
+    <h2 style="font-family:'Fraunces'; font-size:2.5rem;">Why SwayamMail?</h2>
+    <p style="color:var(--text2);">We solve the three biggest pains in Indian email marketing.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <span class="card-icon">💸</span>
+      <h3>No More $ Pressure</h3>
+      <p>International tools charge in Dollars. When the Rupee falls, your bill rises. We offer flat INR pricing with Razorpay & UPI support.</p>
+    </div>
+    <div class="card">
+      <h3>Primary Inbox Only</h3>
+      <p>We focus on reliable deliverability for Indian audiences so your OTPs and newsletters reach the inbox when they matter most.</p>
+      <span class="card-icon" style="margin-top:20px;">🚀</span>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤖</span>
+      <h3>AI for Local Brands</h3>
+      <p>SwayamMail's AI understands local context. Generate email copy that resonates with the Indian audience in seconds.</p>
+    </div>
+  </div>
+</section>
+
+<section class="roadmap">
+  <h2 style="font-family:'Fraunces'; font-size:2.5rem;">The Roadmap to Launch</h2>
+  <div class="roadmap-container">
+    <div class="roadmap-item">
+      <div class="dot done"></div>
+      <div class="roadmap-content">
+        <h4>Core Engine Completed</h4>
+        <p>Our core sending engine is complete and ready for high-volume campaigns.</p>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="dot done"></div>
+      <div class="roadmap-content">
+        <h4>Developer SDK (Beta)</h4>
+        <p>Node.js and Python SDKs ready for early testing.</p>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="dot"></div>
+      <div class="roadmap-content">
+        <h4>AI Template Engine (In Progress)</h4>
+        <p>Building the "Prompt-to-Email" visual editor for non-tech users.</p>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="dot"></div>
+      <div class="roadmap-content">
+        <h4>Public Launch (Q3 2026)</h4>
+        <p>Opening the doors for all Indian startups and businesses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="waitlist">
+  <div class="waitlist-card">
+    <h2 style="font-family:'Fraunces'; font-size:2.5rem; margin-bottom:16px;">Be the first to ship.</h2>
+    <p style="color:rgba(255,255,255,0.7); margin-bottom:32px;">Join 200+ founders and developers on the early access waitlist.</p>
+    <form style="max-width:400px; margin:0 auto;">
+      <input type="email" placeholder="your@email.com" required>
+      <button type="submit" class="btn-primary" style="background:var(--white); color:var(--text); width:100%; justify-content:center;">
+        Get Early Access →
+      </button>
+    </form>
+  </div>
+</section>
+
+<footer style="padding: 60px 32px; text-align: center; border-top: 1px solid var(--border); background: var(--off);">
+  <div style="font-family:'Fraunces'; font-size:1.2rem; margin-bottom:10px;">SwayamMail</div>
+  <p style="font-size:0.8rem; color:var(--text3); margin-bottom:24px;">Solving Email for the Indian Ecosystem.</p>
+  <div style="display:flex; gap:20px; justify-content:center; font-size:0.8rem;">
+    <a href="#" style="color:var(--text2); text-decoration:none;">Twitter</a>
+    <a href="#" style="color:var(--text2); text-decoration:none;">LinkedIn</a>
+    <a href="#" style="color:var(--text2); text-decoration:none;">Documentation</a>
+  </div>
+</footer>
+
+<script>
+function toggleView(view, button) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+    
+    if(view === 'biz') {
+        document.getElementById('biz-preview').classList.add('active');
+    } else {
+        document.getElementById('dev-preview').classList.add('active');
+    }
+
+  if (button) {
+    button.classList.add('active');
+  }
+}
+</script>
+
+</body>
+</html>
