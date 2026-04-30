@@ -1,841 +1,336 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SwayamMail — Growth & Email Marketing for India</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<style>
-:root {
-  --white: #ffffff;
-  --off: #fafafa;
-  --bg: #f5f5f3;
-  --border: #e4e4e0;
-  --border2: #d0d0ca;
-  --text: #111110;
-  --text2: #6b6b66;
-  --text3: #9b9b94;
-  --accent: #1a1a18;
-  --green: #059669;
-  --green-bg: #ecfdf5;
-  --green-border: #a7f3d0;
-  --blue: #2563eb;
-  --radius: 12px;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--white);
-  color: var(--text);
-  font-family: 'Geist', sans-serif;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── NAV ── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 32px;
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--text);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.logo-mark {
-  width: 24px; height: 24px;
-  background: var(--text);
-  border-radius: 6px;
-  display: grid;
-  place-items: center;
-}
-.btn-launch {
-  font-size: 0.75rem;
-  background: var(--off);
-  border: 1px solid var(--border);
-  padding: 4px 10px;
-  border-radius: 6px;
-  color: var(--text2);
-  font-weight: 500;
-}
-
-/* ── HERO ── */
-.hero {
-  padding: 140px 32px 80px;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--blue);
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  padding: 6px 14px;
-  border-radius: 100px;
-  margin-bottom: 32px;
-}
-.hero h1 {
-  font-family: 'Fraunces', serif;
-  font-weight: 400;
-  font-size: clamp(2.5rem, 6vw, 4.2rem);
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-  margin-bottom: 24px;
-}
-.hero h1 em { font-style: italic; color: var(--text2); }
-.hero-sub {
-  font-size: 1.125rem;
-  color: var(--text2);
-  max-width: 600px;
-  margin: 0 auto 40px;
-}
-
-/* ── SWITCHER ── */
-.view-switcher {
-  background: var(--off);
-  border: 1px solid var(--border);
-  display: inline-flex;
-  padding: 4px;
-  border-radius: 100px;
-  margin-bottom: 40px;
-}
-.view-btn {
-  padding: 8px 20px;
-  border: none;
-  background: transparent;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text3);
-  cursor: pointer;
-  border-radius: 100px;
-  transition: all 0.2s;
-}
-.view-btn.active {
-  background: var(--white);
-  color: var(--text);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.display-area {
-  margin-top: 20px;
-  min-height: 300px;
-}
-.panel { display: none; }
-.panel.active { display: block; animation: fadeUp 0.4s ease; }
-
-/* ── DASHBOARD PREVIEW ── */
-.dashboard-mock {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  text-align: left;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-}
-.mock-stat-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
-}
-.stat-card {
-  border: 1px solid var(--border);
-  padding: 16px;
-  border-radius: 8px;
-}
-.stat-label { font-size: 0.7rem; color: var(--text3); text-transform: uppercase; }
-.stat-val { font-size: 1.25rem; font-weight: 600; color: var(--green); }
-
-/* ── CODE MOCK (REUSED) ── */
-.code-mock {
-  background: #111;
-  border-radius: 12px;
-  padding: 24px;
-  text-align: left;
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.85rem;
-  color: #888;
-}
-
-/* ── SECTIONS ── */
-section { padding: 100px 32px; border-top: 1px solid var(--border); }
-.section-header { max-width: 1100px; margin: 0 auto 60px; text-align: center; }
-.section-header h2 { font-family: 'Fraunces', serif; font-size: 2.5rem; letter-spacing: -0.02em; }
-
-.benefit-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.benefit-card {
-  padding: 40px;
-  background: var(--off);
-  border-radius: 20px;
-  border: 1px solid var(--border);
-}
-.benefit-card h3 { margin-bottom: 12px; font-size: 1.2rem; }
-.benefit-card p { color: var(--text2); font-size: 0.95rem; }
-
-/* ── PRICING ── */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.price-card { background: var(--white); padding: 40px 32px; }
-.price-card.featured { background: var(--text); color: var(--white); }
-.price-card h4 { font-family: 'Geist Mono', monospace; font-size: 0.75rem; color: var(--text3); margin-bottom: 16px; }
-.price-card .amt { font-family: 'Fraunces', serif; font-size: 2.5rem; margin-bottom: 8px; }
-
-/* ── BUTTONS ── */
-.btn-primary {
-  background: var(--text);
-  color: var(--white);
-  padding: 14px 28px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  display: inline-block;
-}
-.btn-primary:hover { opacity: 0.9; }
-
-/* ── WAITLIST FORM ── */
-.waitlist-box {
-  background: var(--off);
-  padding: 60px 32px;
-  border-radius: 24px;
-  max-width: 600px;
-  margin: 0 auto;
-  border: 1px solid var(--border);
-}
-.waitlist-form {
-  display: flex;
-  gap: 8px;
-  margin-top: 24px;
-}
-.waitlist-form input {
-  flex: 1;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  font-size: 1rem;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 768px) {
-  .mock-stat-grid { grid-template-columns: 1fr; }
-  .waitlist-form { flex-direction: column; }
-}
-</style>
-</head>
-<body>
-
-<nav>
-  <a href="#" class="nav-logo">
-    <span class="logo-mark">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 4.5L6 7.5L11 4.5" stroke="white" stroke-width="1.2"/><rect x="1" y="3" width="10" height="7" rx="1.5" stroke="white" stroke-width="1.2"/></svg>
-    </span>
-    SwayamMail
-  </a>
-  <div class="btn-launch">Launching Q3 2026</div>
-  <a href="#waitlist" class="btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Join Waitlist</a>
-</nav>
-
-<section class="hero">
-  <div class="hero-badge">Coming Soon: India's Smartest Email Platform</div>
-  <h1>Send emails that<br/><em>actually get opened.</em></h1>
-  <p class="hero-sub">From automated receipts to viral newsletters. SwayamMail combines world-class delivery with an AI-powered editor anyone can use.</p>
-  
-  <div class="view-switcher">
-    <button class="view-btn active" onclick="switchView('biz')">For Business</button>
-    <button class="view-btn" onclick="switchView('dev')">For Developers</button>
-  </div>
-
-  <div class="display-area">
-    <div id="biz-panel" class="panel active">
-      <div class="dashboard-mock">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-          <span style="font-weight:600; font-size:0.9rem;">Campaign Performance</span>
-          <span style="font-size:0.75rem; color:var(--text3)">Last 30 Days</span>
-        </div>
-        <div class="mock-stat-grid">
-          <div class="stat-card">
-            <div class="stat-label">Emails Delivered</div>
-            <div class="stat-val" style="color:var(--text)">42,801</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Open Rate</div>
-            <div class="stat-val">38.4%</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Revenue Generated</div>
-            <div class="stat-val" style="color:var(--blue)">₹1,24,000</div>
-          </div>
-        </div>
-        <div style="height:8px; width:100%; background:var(--bg); border-radius:10px; overflow:hidden;">
-          <div style="height:100%; width:85%; background:var(--green);"></div>
-        </div>
-        <p style="font-size:0.75rem; color:var(--text2); margin-top:12px;">✨ AI Tip: Your "Weekend Sale" email is performing 12% better than average.</p>
-      </div>
-    </div>
-
-    <div id="dev-panel" class="panel">
-      <div class="code-mock">
-        <span style="color: #c4b5fd;">import</span> SwayamMail <span style="color: #c4b5fd;">from</span> <span style="color: #4ade80;">'@swayammail/sdk'</span>;<br/><br/>
-        <span style="color: #c4b5fd;">await</span> mail.<span style="color: #93c5fd;">send</span>({<br/>
-        &nbsp;&nbsp;to: <span style="color: #4ade80;">'customer@gmail.com'</span>,<br/>
-        &nbsp;&nbsp;template: <span style="color: #4ade80;">'order-confirmed'</span>,<br/>
-        &nbsp;&nbsp;data: { orderId: <span style="color: #fcd34d;">'#8821'</span> }<br/>
-        });
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="benefits">
-  <div class="section-header">
-    <h2>Growth tools for every <em>ambition.</em></h2>
-  </div>
-  <div class="benefit-grid">
-    <div class="benefit-card">
-      <h3>AI-Powered Writing</h3>
-      <p>Stuck on what to say? Tell our AI your goal, and it will write, design, and personalize the perfect email for your brand in seconds.</p>
-    </div>
-    <div class="benefit-card">
-      <h3>India-First Delivery</h3>
-      <p>We optimize our servers specifically for Indian ISPs (Gmail, Outlook, Rediff) to ensure your messages land in the primary inbox, not spam.</p>
-    </div>
-    <div class="benefit-card">
-      <h3>Visual Automations</h3>
-      <p>Build "Customer Journeys" visually. Send a welcome gift when they sign up, or a reminder if they leave items in their cart.</p>
-    </div>
-  </div>
-</section>
-
-<section id="pricing">
-  <div class="section-header">
-    <h2>Local prices. <em>Global power.</em></h2>
-    <p style="margin-top:10px; color:var(--text3)">Stop paying for email in Dollars. Pay in Rupees via UPI or Razorpay.</p>
-  </div>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <h4>STARTER</h4>
-      <div class="amt">₹999</div>
-      <p style="color:var(--text3); font-size:0.8rem; margin-bottom:20px;">/month</p>
-      <ul style="list-style:none; font-size:0.85rem; color:var(--text2);">
-        <li style="margin-bottom:8px;">✓ 50,000 Emails</li>
-        <li style="margin-bottom:8px;">✓ 100 AI Generations</li>
-        <li>✓ Full Analytics</li>
-      </ul>
-    </div>
-    <div class="price-card featured">
-      <h4>PRO</h4>
-      <div class="amt">₹3,999</div>
-      <p style="color:rgba(255,255,255,0.4); font-size:0.8rem; margin-bottom:20px;">/month</p>
-      <ul style="list-style:none; font-size:0.85rem; color:rgba(255,255,255,0.7);">
-        <li style="margin-bottom:8px;">✓ 300,000 Emails</li>
-        <li style="margin-bottom:8px;">✓ Unlimited AI</li>
-        <li>✓ Priority Delivery</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="waitlist" style="text-align:center;">
-  <div class="waitlist-box">
-    <h2 style="font-family: 'Fraunces', serif;">Get early access.</h2>
-    <p style="color:var(--text2); margin-top:10px;">We are currently in private beta. Join the waitlist to be among the first to send smarter emails when we launch.</p>
-    <form class="waitlist-form">
-      <input type="email" placeholder="Enter your work email" required>
-      <button type="submit" class="btn-primary">Reserve my spot →</button>
-    </form>
-    <p style="font-size:0.7rem; color:var(--text3); margin-top:20px;">Made with ❤️ in India for the world.</p>
-  </div>
-</section>
-
-<footer style="padding: 40px; text-align: center; color: var(--text3); font-size: 0.8rem; border-top: 1px solid var(--border);">
-  © 2026 SwayamMail. All rights reserved. Launching soon.
-</footer>
-
-<script>
-function switchView(type) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-  
-  if(type === 'biz') {
-    document.getElementById('biz-panel').classList.add('active');
-    event.target.classList.add('active');
-  } else {
-    document.getElementById('dev-panel').classList.add('active');
-    event.target.classList.add('active');
-  }
-}
-</script>
-
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SwayamMail — The Future of Email Marketing in India</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<style>
-:root {
-  --white: #ffffff;
-  --off: #fafafa;
-  --bg: #f5f5f3;
-  --border: #e4e4e0;
-  --border2: #d0d0ca;
-  --text: #111110;
-  --text2: #4a4a45;
-  --text3: #9b9b94;
-  --accent: #1a1a18;
-  --green: #059669;
-  --blue: #2563eb;
-  --radius: 12px;
-}
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SwayamMail — Email Infrastructure for India</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --white: #ffffff;
+            --off: #fafaf9;
+            --border: #e7e7e4;
+            --text: #1c1c1a;
+            --text-muted: #71716a;
+            --accent: #059669; /* Emerald */
+            --blue: #2563eb;
+        }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--white);
-  color: var(--text);
-  font-family: 'Geist', sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+        body {
+            background-color: var(--white);
+            color: var(--text);
+            font-family: 'Geist', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-/* ── NAV ── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 32px;
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--text);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.logo-mark {
-  width: 24px; height: 24px;
-  background: var(--text);
-  border-radius: 6px;
-  display: grid; place-items: center;
-}
+        .serif { font-family: 'Fraunces', serif; }
+        .mono { font-family: 'Geist Mono', monospace; }
 
-/* ── HERO ── */
-.hero {
-  padding: 160px 32px 100px;
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--green);
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  padding: 6px 16px;
-  border-radius: 100px;
-  margin-bottom: 32px;
-}
-.hero h1 {
-  font-family: 'Fraunces', serif;
-  font-weight: 400;
-  font-size: clamp(2.8rem, 8vw, 4.8rem);
-  line-height: 1;
-  letter-spacing: -0.05em;
-  margin-bottom: 28px;
-}
-.hero h1 em { font-style: italic; color: var(--text3); }
-.hero-sub {
-  font-size: 1.25rem;
-  color: var(--text2);
-  max-width: 650px;
-  margin: 0 auto 48px;
-}
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--off); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
 
-/* ── VIEW SWITCHER ── */
-.view-switcher {
-  background: var(--bg);
-  padding: 5px;
-  border-radius: 100px;
-  display: inline-flex;
-  margin-bottom: 40px;
-  border: 1px solid var(--border);
-}
-.view-btn {
-  padding: 10px 24px;
-  border: none;
-  background: transparent;
-  font-family: 'Geist', sans-serif;
-  font-weight: 500;
-  font-size: 0.85rem;
-  cursor: pointer;
-  border-radius: 100px;
-  transition: all 0.3s;
-  color: var(--text3);
-}
-.view-btn.active {
-  background: var(--white);
-  color: var(--text);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
 
-.preview-container {
-  max-width: 800px;
-  margin: 0 auto;
-  perspective: 1000px;
-}
-.panel { display: none; animation: slideUp 0.5s ease-out; }
-.panel.active { display: block; }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% -20%, #f0fdf4 0%, #ffffff 50%);
+        }
 
-.dashboard-mock {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  text-align: left;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-}
-.mock-stat-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
-}
-.stat-card {
-  border: 1px solid var(--border);
-  padding: 16px;
-  border-radius: 8px;
-}
-.stat-label {
-  font-size: 0.7rem;
-  color: var(--text3);
-  text-transform: uppercase;
-}
-.stat-val {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--green);
-}
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border);
+        }
 
-/* ── THE PROBLEM SECTION ── */
-.problem-section {
-  padding: 100px 32px;
-  background: var(--off);
-  border-top: 1px solid var(--border);
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.card {
-  background: var(--white);
-  padding: 40px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  transition: transform 0.3s;
-}
-.card:hover { transform: translateY(-5px); }
-.card-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
-.card h3 { font-family: 'Fraunces', serif; margin-bottom: 12px; font-size: 1.4rem; }
+        .step-dot::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            width: 1px;
+            height: 100%;
+            background: var(--border);
+            z-index: 0;
+        }
 
-/* ── ROADMAP ── */
-.roadmap { padding: 100px 32px; text-align: center; }
-.roadmap-container {
-  max-width: 800px;
-  margin: 60px auto 0;
-  text-align: left;
-}
-.roadmap-item {
-  display: flex;
-  gap: 24px;
-  padding-bottom: 40px;
-  position: relative;
-}
-.roadmap-item::before {
-  content: '';
-  position: absolute;
-  left: 11px; top: 24px; bottom: 0;
-  width: 1px; background: var(--border);
-}
-.roadmap-item:last-child::before { display: none; }
-.dot {
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 2px solid var(--border);
-  flex-shrink: 0;
-  z-index: 2;
-}
-.dot.done { border-color: var(--green); background: var(--green); }
-.roadmap-content h4 { font-size: 1rem; margin-bottom: 4px; }
-.roadmap-content p { font-size: 0.9rem; color: var(--text2); }
+        .panel { display: none; }
+        .panel.active { display: block; animation: fadeIn 0.4s ease; }
 
-/* ── FORMS & BUTTONS ── */
-.btn-primary {
-  background: var(--text);
-  color: var(--white);
-  padding: 16px 32px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.2s;
-}
-.btn-primary:hover { transform: scale(1.02); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-.waitlist-card {
-  max-width: 600px;
-  margin: 80px auto;
-  padding: 60px 40px;
-  background: var(--text);
-  color: var(--white);
-  border-radius: 24px;
-  text-align: center;
-}
-.waitlist-card input {
-  width: 100%;
-  padding: 16px;
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 12px;
-  font-size: 1rem;
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 600px) {
-  .hero { padding-top: 120px; }
-  .hero h1 { font-size: 2.8rem; }
-  .mock-stat-grid { grid-template-columns: 1fr; }
-}
-</style>
+        .verified-badge {
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-logo">
-    <span class="logo-mark">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 4.5L6 7.5L11 4.5" stroke="white" stroke-width="1.2"/><rect x="1" y="3" width="10" height="7" rx="1.5" stroke="white" stroke-width="1.2"/></svg>
-    </span>
-    SwayamMail
-  </a>
-  <div style="font-family:'Geist Mono'; font-size: 0.7rem; color: var(--text3);">v0.1 BETA</div>
-</nav>
-
-<section class="hero">
-  <div class="hero-badge">🇮🇳 Built for the Next Billion Indian Businesses</div>
-  <h1>Finally, an email platform<br/>that speaks <em>your language.</em></h1>
-  <p class="hero-sub">High-speed transactional alerts for developers. AI-driven marketing for business owners. Local pricing for everyone.</p>
-  
-  <div class="view-switcher">
-    <button class="view-btn active" onclick="toggleView('biz', this)">Business Owner</button>
-    <button class="view-btn" onclick="toggleView('dev', this)">Developer</button>
-  </div>
-
-  <div class="preview-container">
-    <div id="biz-preview" class="panel active">
-      <div class="dashboard-mock">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-          <span style="font-weight:600; font-size:0.9rem;">Campaign Performance</span>
-          <span style="font-size:0.75rem; color:var(--text3)">Last 30 Days</span>
+    <!-- Nav -->
+    <nav class="glass-nav fixed top-0 w-full z-50 h-16 flex items-center justify-between px-6 md:px-12">
+        <div class="flex items-center gap-2">
+            <div class="w-7 h-7 bg-black rounded flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M1 4.5L6 7.5L11 4.5" stroke="white" stroke-width="1.2"/><rect x="1" y="3" width="10" height="7" rx="1.5" stroke="white" stroke-width="1.2"/></svg>
+            </div>
+            <span class="serif text-lg font-medium tracking-tight">SwayamMail</span>
         </div>
-        <div class="mock-stat-grid">
-          <div class="stat-card">
-            <div class="stat-label">Emails Delivered</div>
-            <div class="stat-val" style="color:var(--text)">42,801</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Open Rate</div>
-            <div class="stat-val">38.4%</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Revenue Generated</div>
-            <div class="stat-val" style="color:var(--blue)">₹1,24,000</div>
-          </div>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[#71716a]">
+            <a href="#features" class="hover:text-black">Features</a>
+            <a href="#developers" class="hover:text-black">API</a>
+            <a href="#pricing" class="hover:text-black">Pricing</a>
         </div>
-        <div style="height:8px; width:100%; background:var(--bg); border-radius:10px; overflow:hidden;">
-          <div style="height:100%; width:85%; background:var(--green);"></div>
+        <div class="flex items-center gap-4">
+            <span class="hidden sm:inline mono text-[10px] text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-100">BETA v0.4</span>
+            <a href="#" class="bg-black text-white text-sm px-4 py-2 rounded-lg font-medium hover:opacity-80 transition-all">Sign In</a>
         </div>
-        <p style="font-size:0.75rem; color:var(--text2); margin-top:12px;">✨ AI Tip: Your "Weekend Sale" email is performing 12% better than average.</p>
-      </div>
-    </div>
+    </nav>
 
-    <div id="dev-preview" class="panel">
-        <div style="background:#111; border-radius:16px; padding:32px; text-align:left; font-family:'Geist Mono'; font-size:0.9rem; line-height:1.7; color:#9ca3af;">
-            <span style="color:#888;">// Initialize with one line</span><br/>
-            <span style="color:#c4b5fd;">const</span> mail = <span style="color:#c4b5fd;">new</span> <span style="color:#93c5fd;">SwayamMail</span>(<span style="color:#4ade80;">'sm_live_9921'</span>);<br/><br/>
-            <span style="color:#888;">// Send to 1 or 100,000 users</span><br/>
-            <span style="color:#c4b5fd;">await</span> mail.<span style="color:#93c5fd;">send</span>({<br/>
-            &nbsp;&nbsp;to: <span style="color:#4ade80;">['user@domain.in']</span>,<br/>
-            &nbsp;&nbsp;subject: <span style="color:#4ade80;">'Your OTP is 1234'</span><br/>
-            });
+    <!-- Hero -->
+    <section class="hero-gradient pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-white border border-gray-200 px-3 py-1 rounded-full text-xs font-medium mb-8 card-shadow">
+                <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Now Live: Domain Verification & HTML Campaigns
+            </div>
+            <h1 class="serif text-5xl md:text-7xl mb-6 tracking-tight leading-[1.1]">
+                Own your sender <br/>
+                <span class="text-gray-400 italic">reputation.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Connect your domain, upload your lists, and start sending high-delivery TXT or HTML emails in minutes. Built for the Indian ecosystem.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#get-started" class="w-full sm:w-auto bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:scale-[1.02] transition-transform shadow-lg shadow-black/10">
+                    Get Started for Free
+                </a>
+                <a href="#developers" class="w-full sm:w-auto bg-white text-black border border-gray-200 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50">
+                    Read Documentation
+                </a>
+            </div>
+
+            <!-- Dashboard Switcher -->
+            <div class="max-w-3xl mx-auto">
+                <div class="flex justify-center gap-2 mb-4">
+                    <button onclick="switchTab('business', this)" class="tab-btn px-4 py-2 text-sm font-medium rounded-full bg-gray-100 text-gray-500 active-tab [&.active]:bg-black [&.active]:text-white active">Business Suite</button>
+                    <button onclick="switchTab('developer', this)" class="tab-btn px-4 py-2 text-sm font-medium rounded-full bg-gray-100 text-gray-500 [&.active]:bg-black [&.active]:text-white">Developer API</button>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-2xl p-2 card-shadow">
+                    <!-- Business Mockup -->
+                    <div id="business-panel" class="panel active p-6 text-left">
+                        <div class="flex items-center justify-between mb-8 pb-4 border-bottom border-gray-100 border-b">
+                            <div>
+                                <h3 class="font-semibold text-sm">Sender Identity</h3>
+                                <p class="text-xs text-gray-400">Manage your verified domains</p>
+                            </div>
+                            <button class="text-xs font-semibold text-blue-600">+ Add Domain</button>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xs">✓</div>
+                                    <div>
+                                        <div class="text-sm font-medium">newsletter.mybrand.in</div>
+                                        <div class="text-[10px] text-gray-400 mono uppercase tracking-wider">SPF • DKIM • DMARC</div>
+                                    </div>
+                                </div>
+                                <span class="verified-badge">ACTIVE</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-4 border border-gray-100 rounded-xl">
+                                    <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">Total Contacts</div>
+                                    <div class="text-2xl font-semibold">12,402</div>
+                                    <div class="text-[10px] text-emerald-600 mt-1">+12% this week</div>
+                                </div>
+                                <div class="p-4 border border-gray-100 rounded-xl">
+                                    <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">Deliverability</div>
+                                    <div class="text-2xl font-semibold">99.8%</div>
+                                    <div class="text-[10px] text-emerald-600 mt-1">Excellent reputation</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Developer Mockup -->
+                    <div id="developer-panel" class="panel p-6 text-left">
+                        <div class="bg-[#111] rounded-xl p-6 mono text-[13px] leading-relaxed overflow-x-auto">
+                            <div class="flex gap-2 mb-4 border-b border-white/10 pb-4">
+                                <span class="text-white/40">POST</span>
+                                <span class="text-emerald-400">/v1/send</span>
+                            </div>
+                            <div class="text-gray-400">
+                                {<br/>
+                                &nbsp;&nbsp;<span class="text-purple-400">"from"</span>: <span class="text-emerald-300">"marketing@mybrand.in"</span>,<br/>
+                                &nbsp;&nbsp;<span class="text-purple-400">"to"</span>: <span class="text-emerald-300">"customer@gmail.com"</span>,<br/>
+                                &nbsp;&nbsp;<span class="text-purple-400">"subject"</span>: <span class="text-emerald-300">"Welcome to the family"</span>,<br/>
+                                &nbsp;&nbsp;<span class="text-purple-400">"format"</span>: <span class="text-emerald-300">"html"</span>,<br/>
+                                &nbsp;&nbsp;<span class="text-purple-400">"body"</span>: <span class="text-emerald-300">"&lt;h1&gt;Namaste!&lt;/h1&gt;..."</span><br/>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="problem-section">
-  <div class="section-header" style="text-align:center; margin-bottom:60px;">
-    <h2 style="font-family:'Fraunces'; font-size:2.5rem;">Why SwayamMail?</h2>
-    <p style="color:var(--text2);">We solve the three biggest pains in Indian email marketing.</p>
-  </div>
-  <div class="grid">
-    <div class="card">
-      <span class="card-icon">💸</span>
-      <h3>No More $ Pressure</h3>
-      <p>International tools charge in Dollars. When the Rupee falls, your bill rises. We offer flat INR pricing with Razorpay & UPI support.</p>
-    </div>
-    <div class="card">
-      <h3>Primary Inbox Only</h3>
-      <p>We focus on reliable deliverability for Indian audiences so your OTPs and newsletters reach the inbox when they matter most.</p>
-      <span class="card-icon" style="margin-top:20px;">🚀</span>
-    </div>
-    <div class="card">
-      <span class="card-icon">🤖</span>
-      <h3>AI for Local Brands</h3>
-      <p>SwayamMail's AI understands local context. Generate email copy that resonates with the Indian audience in seconds.</p>
-    </div>
-  </div>
-</section>
+    <!-- Features -->
+    <section id="features" class="py-24 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="serif text-4xl mb-4 tracking-tight">Three steps to inbox mastery.</h2>
+                <p class="text-gray-500">Stop worrying about spam folders. Focus on the content.</p>
+            </div>
 
-<section class="roadmap">
-  <h2 style="font-family:'Fraunces'; font-size:2.5rem;">The Roadmap to Launch</h2>
-  <div class="roadmap-container">
-    <div class="roadmap-item">
-      <div class="dot done"></div>
-      <div class="roadmap-content">
-        <h4>Core Engine Completed</h4>
-        <p>Our core sending engine is complete and ready for high-volume campaigns.</p>
-      </div>
-    </div>
-    <div class="roadmap-item">
-      <div class="dot done"></div>
-      <div class="roadmap-content">
-        <h4>Developer SDK (Beta)</h4>
-        <p>Node.js and Python SDKs ready for early testing.</p>
-      </div>
-    </div>
-    <div class="roadmap-item">
-      <div class="dot"></div>
-      <div class="roadmap-content">
-        <h4>AI Template Engine (In Progress)</h4>
-        <p>Building the "Prompt-to-Email" visual editor for non-tech users.</p>
-      </div>
-    </div>
-    <div class="roadmap-item">
-      <div class="dot"></div>
-      <div class="roadmap-content">
-        <h4>Public Launch (Q3 2026)</h4>
-        <p>Opening the doors for all Indian startups and businesses.</p>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="relative pl-12 md:pl-0 md:text-center">
+                    <div class="md:mx-auto w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-bold mb-6">1</div>
+                    <h3 class="font-bold text-xl mb-3">Verify Domain</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Add your domain and we'll give you the DNS records. We verify SPF, DKIM, and DMARC automatically to ensure your emails are trusted.</p>
+                </div>
+                <div class="relative pl-12 md:pl-0 md:text-center">
+                    <div class="md:mx-auto w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-bold mb-6">2</div>
+                    <h3 class="font-bold text-xl mb-3">Build Your List</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Import contacts via CSV or sync them through our API. Organize your audience into segments for targeted communication.</p>
+                </div>
+                <div class="relative pl-12 md:pl-0 md:text-center">
+                    <div class="md:mx-auto w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-bold mb-6">3</div>
+                    <h3 class="font-bold text-xl mb-3">Compose & Send</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Send simple text-based alerts or rich HTML newsletters. Use our sandbox to test your design before it reaches your customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="waitlist">
-  <div class="waitlist-card">
-    <h2 style="font-family:'Fraunces'; font-size:2.5rem; margin-bottom:16px;">Be the first to ship.</h2>
-    <p style="color:rgba(255,255,255,0.7); margin-bottom:32px;">Join 200+ founders and developers on the early access waitlist.</p>
-    <form style="max-width:400px; margin:0 auto;">
-      <input type="email" placeholder="your@email.com" required>
-      <button type="submit" class="btn-primary" style="background:var(--white); color:var(--text); width:100%; justify-content:center;">
-        Get Early Access →
-      </button>
-    </form>
-  </div>
-</section>
+    <!-- Detailed Services -->
+    <section class="bg-gray-50 py-24 border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="serif text-4xl mb-6 leading-tight">The developer's choice for <em>transactional</em> mail.</h2>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-6 h-6 bg-emerald-100 rounded text-emerald-600 flex-shrink-0 flex items-center justify-center text-xs">✓</div>
+                            <div>
+                                <h4 class="font-bold text-sm">Lightning Fast Delivery</h4>
+                                <p class="text-gray-500 text-xs mt-1">Our nodes are optimized for local Indian ISPs, ensuring your OTPs land instantly.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-6 h-6 bg-emerald-100 rounded text-emerald-600 flex-shrink-0 flex items-center justify-center text-xs">✓</div>
+                            <div>
+                                <h4 class="font-bold text-sm">Sender Authentication</h4>
+                                <p class="text-gray-500 text-xs mt-1">Manage multiple "Sender Emails" under a single verified domain for different business units.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-6 h-6 bg-emerald-100 rounded text-emerald-600 flex-shrink-0 flex items-center justify-center text-xs">✓</div>
+                            <div>
+                                <h4 class="font-bold text-sm">Flexible Pay-as-you-go</h4>
+                                <p class="text-gray-500 text-xs mt-1">No monthly lock-ins during beta. Pay only for what you send via UPI/Razorpay.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-2xl card-shadow rotate-1 hidden md:block">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Interface preview" class="rounded-xl grayscale hover:grayscale-0 transition-all duration-700"/>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer style="padding: 60px 32px; text-align: center; border-top: 1px solid var(--border); background: var(--off);">
-  <div style="font-family:'Fraunces'; font-size:1.2rem; margin-bottom:10px;">SwayamMail</div>
-  <p style="font-size:0.8rem; color:var(--text3); margin-bottom:24px;">Solving Email for the Indian Ecosystem.</p>
-  <div style="display:flex; gap:20px; justify-content:center; font-size:0.8rem;">
-    <a href="#" style="color:var(--text2); text-decoration:none;">Twitter</a>
-    <a href="#" style="color:var(--text2); text-decoration:none;">LinkedIn</a>
-    <a href="#" style="color:var(--text2); text-decoration:none;">Documentation</a>
-  </div>
-</footer>
+    <!-- Roadmap Timeline -->
+    <section class="py-24">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="serif text-3xl text-center mb-12">Current Status & Roadmap</h2>
+            <div class="space-y-12">
+                <div class="flex gap-8 relative">
+                    <div class="w-4 h-4 rounded-full bg-emerald-500 mt-1 flex-shrink-0 z-10"></div>
+                    <div class="absolute left-2 top-2 bottom-[-48px] w-[1px] bg-emerald-200"></div>
+                    <div>
+                        <div class="text-xs font-bold text-emerald-600 mono mb-1 uppercase">Completed — April 2026</div>
+                        <h4 class="font-bold mb-2">Core Sending Infrastructure</h4>
+                        <p class="text-gray-500 text-sm">Domain verification (SPF/DKIM), list management, and the hybrid TXT/HTML sending engine is now live.</p>
+                    </div>
+                </div>
 
-<script>
-function toggleView(view, button) {
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-    
-    if(view === 'biz') {
-        document.getElementById('biz-preview').classList.add('active');
-    } else {
-        document.getElementById('dev-preview').classList.add('active');
-    }
+                <div class="flex gap-8 relative">
+                    <div class="w-4 h-4 rounded-full bg-blue-500 mt-1 flex-shrink-0 z-10 border-4 border-white"></div>
+                    <div class="absolute left-2 top-2 bottom-[-48px] w-[1px] bg-gray-200"></div>
+                    <div>
+                        <div class="text-xs font-bold text-blue-600 mono mb-1 uppercase">In Progress — Q2 2026</div>
+                        <h4 class="font-bold mb-2">Open Beta & Monitoring</h4>
+                        <p class="text-gray-500 text-sm">Onboarding early access users and refining the real-time bounce/complaint monitoring dashboard.</p>
+                    </div>
+                </div>
 
-  if (button) {
-    button.classList.add('active');
-  }
-}
-</script>
+                <div class="flex gap-8 relative">
+                    <div class="w-4 h-4 rounded-full bg-gray-200 mt-1 flex-shrink-0 z-10 border-4 border-white"></div>
+                    <div>
+                        <div class="text-xs font-bold text-gray-400 mono mb-1 uppercase">Upcoming — Q3 2026</div>
+                        <h4 class="font-bold mb-2">AI-Template Studio</h4>
+                        <p class="text-gray-500 text-sm">Prompt-to-Email generation for non-technical users to build stunning marketing assets without code.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Final CTA -->
+    <section id="get-started" class="py-24 bg-black text-white text-center">
+        <div class="max-w-2xl mx-auto px-6">
+            <h2 class="serif text-4xl mb-6">Ready to improve your delivery?</h2>
+            <p class="text-gray-400 mb-10">Join founders and developers building on SwayamMail. No credit card required to start.</p>
+            <form onsubmit="return false;" class="flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="work@company.in" class="flex-1 bg-white/10 border border-white/20 px-4 py-3 rounded-xl focus:outline-none focus:border-emerald-500 transition-colors"/>
+                <button class="bg-white text-black px-8 py-3 rounded-xl font-bold hover:bg-emerald-500 hover:text-white transition-all">
+                    Create Account
+                </button>
+            </form>
+            <p class="text-[10px] text-gray-500 mt-4 mono uppercase tracking-widest">Free during beta • Secure via Razorpay • 24/7 Support</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-100 text-center">
+        <div class="serif text-xl mb-4">SwayamMail</div>
+        <p class="text-gray-400 text-xs mb-6">© 2026 Yugaas, Hyderabad, India.</p>
+        <div class="flex justify-center gap-6 text-xs font-medium text-gray-500">
+            <a href="#" class="hover:text-black">Twitter</a>
+            <a href="#" class="hover:text-black">Status</a>
+            <a href="#" class="hover:text-black">Privacy</a>
+            <a href="#" class="hover:text-black">Terms</a>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(type, btn) {
+            // Update buttons
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Update panels
+            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+            document.getElementById(type + '-panel').classList.add('active');
+        }
+    </script>
 </body>
 </html>
